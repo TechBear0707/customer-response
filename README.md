@@ -32,11 +32,13 @@ By using logistic regression, we transform predictors into a probability (rangin
 ## Summary of Findings
 ### Significant Predictors:
 - All selected predictors (gender, last, purch, total$) were statistically significant (p-value < 0.05), demonstrating their influence on purchase probability.
+![Price Calculator](images/summary_statistics.png)
 - Interpretation of Odds:
   - A male customer is 1.67 times more likely to purchase compared to a female customer.
   - Each additional purchase increases the odds by approximately 9%.
 ### Model Predictions:
 - The predicted purchase probabilities vary widely across customers, suggesting that targeted marketing based on these predictions (e.g., focusing on customers in the upper quartile of purchase probability) could improve marketing productivity.
+![Price Calculator](images/probabilities.png)
 ### Performance Evaluation:
 - The model's AUC of 0.708 shows an acceptable level of discrimination between buyers and non-buyers, providing a solid baseline for further model refinement.
 
