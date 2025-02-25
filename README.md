@@ -26,6 +26,8 @@ By using logistic regression, we transform predictors into a probability (rangin
     - An ROC curve was generated to assess model performance, plotting the true positive rate versus the false positive rate at various thresholds. Although visualizing the ROC curve is useful, its insights can be summarized with the AUC metric.
     - AUC Findings: The model achieved an AUC of 0.708. Generally, an AUC above 0.8 is considered strong, between 0.7 and 0.8 acceptable, and over 0.9 outstanding. An AUC of 0.708 indicates that the model produces an acceptable balance between true positive and false positive predictions.
  
+![Price Calculator](images/roc_curve.png)
+ 
 
 ## Summary of Findings
 ### Significant Predictors:
