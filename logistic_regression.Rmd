@@ -1,0 +1,78 @@
+---
+title: "Predicting Customer Response With Logistic Regression"
+output: html_notebook
+---
+
+## Libraries and Data
+```{r}
+
+library(tidyverse)  # data manipulation, exploration and visualization
+library(readxl)     # get data out of Excel 
+library(knitr)      # dynamic report generation
+library(ggplot2)    # data visualization
+library(caret)      # classification and regression training, confusion matrix
+library(pROC)       # display and analyze ROC curves
+library(base)       # rounding of numbers
+
+# Read data
+MALM = read_excel("MALM.xlsx", sheet = "MALM")
+
+```
+
+## Logit Model
+```{r}
+
+# logit model with 'buyer' as the dependent variable
+logit1 = glm(buyer ~ gender + last + purch + `total$`, family="binomial", data = MALM)
+
+# ANOVA table
+summary(logit1)
+
+```
+
+## Example 
+```{r}
+
+# computing the odds that a male ('genderM' = 1) customer with measures ('last' = 3, 'purch' = 20, 'total$' = 700) 
+# will purchase the pasta dish
+
+# coefficient values from summary table
+last_coeff <- logit1$coefficients["last"]
+purch_coeff <- logit1$coefficients["purch"]
+total_coeff <- logit1$coefficients["`total$`"]
+gender_coeff <- logit1$coefficients["genderM"]
+intercept <- -2.2106375786
+
+# plugging in values to original logistic model
+# transforming with exp()
+purch_odds <- exp((700 * total_coeff) 
+                  + (20 * purch_coeff) + (3 * last_coeff) 
+                  + (1 * gender_coeff) 
+                  + intercept) # customer with these values is 1.4 times more likely to purchase pasta
+
+```
+
+## Making Predictions
+```{r}
+
+# predict() is used to predict the values based on the input data
+# type="response" is used to output probabilities of the form P(Y=1|X)
+p_hat = predict(logit1, type = "response")
+
+summary(p_hat)
+
+```
+
+## Assess Model Performance with ROC Curve
+```{r}
+
+# AUC and ROC curve
+MALM$p_hat = p_hat
+# roc() is used to compute the ROC curve
+pROC_obj <- roc(MALM$buyer, p_hat,
+                ## arguments for plot
+                plot=TRUE, auc.polygon=TRUE, max.auc.polygon=TRUE, grid=TRUE,
+                print.auc=TRUE, show.thres=TRUE)
+pROC_obj
+
+```
