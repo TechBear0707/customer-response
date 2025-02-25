@@ -25,4 +25,16 @@ By using logistic regression, we transform predictors into a probability (rangin
 - ### Model Evaluation:
     - An ROC curve was generated to assess model performance, plotting the true positive rate versus the false positive rate at various thresholds. Although visualizing the ROC curve is useful, its insights can be summarized with the AUC metric.
     - AUC Findings: The model achieved an AUC of 0.708. Generally, an AUC above 0.8 is considered strong, between 0.7 and 0.8 acceptable, and over 0.9 outstanding. An AUC of 0.708 indicates that the model produces an acceptable balance between true positive and false positive predictions.
+ 
+
+## Summary of Findings
+### Significant Predictors:
+- All selected predictors (gender, last, purch, total$) were statistically significant (p-value < 0.05), demonstrating their influence on purchase probability.
+- Interpretation of Odds:
+  - A male customer is 1.67 times more likely to purchase compared to a female customer.
+  - Each additional purchase increases the odds by approximately 9%.
+### Model Predictions:
+- The predicted purchase probabilities vary widely across customers, suggesting that targeted marketing based on these predictions (e.g., focusing on customers in the upper quartile of purchase probability) could improve marketing productivity.
+### Performance Evaluation:
+- The model's AUC of 0.708 shows an acceptable level of discrimination between buyers and non-buyers, providing a solid baseline for further model refinement.
 
