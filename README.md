@@ -10,11 +10,11 @@ By using logistic regression, we transform predictors into a probability (rangin
 
 ## Project Components
 - ### Data & Features:
- The dataset includes the binary target variable buyer (1 for purchase, 0 otherwise) along with predictors like:
- - gender
- - last (an index or recency metric)
- - purch (frequency of past purchases)
- - total$ (total expenditure)
+  The dataset includes the binary target variable buyer (1 for purchase, 0 otherwise) along with predictors like:
+  - gender
+  - last (an index or recency metric)
+  - purch (frequency of past purchases)
+  - total$ (total expenditure)
 - ### Modeling Approach:
   - Logistic Regression: used to model probability of purchase.
   - Interpretation of coefficients:
